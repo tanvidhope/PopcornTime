@@ -1,0 +1,89 @@
+{% extends 'movie/base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black !important;
+    color:white;
+}
+</style>
+{% if user.is_authenticated %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color:yellow; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" href="#">Popcorn Time</a>
+        </div>
+
+        
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="btn btn-primary" style="color:white;"" href="{% url 'accounts:signout' %}">Sign out</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a style="color:greenyellow;font-weight: bold; font-size: large;">User: {{ user.get_username }}</a></li>
+        </ul>
+   
+    </div>
+</nav>
+
+<h3 style="color:red;"><center>Welcome to Popcorn Time!</center></h3> <br>
+<center><img height=100 width=100 src="{% static 'movie/popcorn.png' %}"></center>
+<h3 style="color:red;"><center>Trending Movies</center></h3> <br>
+<ul style="list-style-type: none;font-family: Verdana, Geneva, Tahoma, sans-serif;"><center>
+{% for movie in movie_list %}
+    <li style="margin:5px; padding-top:10px;padding-bottom:10px; background-color:crimson;">
+        <img src="{{ movie.img }}" width=50 height=50>
+        <div style="text-align: center;">
+        <a href="{{movie.url}}" style="color:white; font-weight: bold;">{{ movie }}</a>
+        <br>(
+        {% if movie.adventure_genre%}
+        <span>Adventure, </span>
+        {% endif %}
+        {% if movie.comedy_genre%}
+        <span>Comedy, </span>
+        {% endif %}
+        {% if movie.thriller_genre%}
+        <span>Thriller, </span>
+        {% endif %}
+        {% if movie.action_genre%}
+        <span>Action, </span>
+        {% endif %}
+        {% if movie.romance_genre%}
+        <span>Romance, </span>
+        {% endif %}
+        {% if movie.animation_genre %}
+        <span>Animation, </span>
+        {% endif %}
+        )   
+    </div>
+    
+    </li>
+{% endfor %}
+</ul>
+</center>
+
+{% else %}
+
+<nav class="navbar navbar-light" style="background-color: red;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color:yellow; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" href="#">Popcorn Time</a>
+        </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="btn btn-primary" style="color:white;" href="{% url 'accounts:signin' %}">Sign in</a></li>
+    </ul>
+    </div>
+</nav>
+
+<center><img height=150 width=150 src="{% static 'movie/popcorn.png' %}"></center>
+<center><h1 style="color:yellow; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Popcorn Time</h1>
+    <h3 style="color:white; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Delve into the depths of drama and search for your tastes in movies!</h3>
+    <h3 style="color:white; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Create an account today and get access to the trends!</h3></center>
+{% endif %}
+
+
+{% endblock %}
