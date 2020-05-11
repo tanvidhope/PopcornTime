@@ -83,6 +83,12 @@ body {
 <center><h1 style="color:yellow; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Popcorn Time</h1>
     <h3 style="color:white; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Delve into the depths of drama and search for your tastes in movies!</h3>
     <h3 style="color:white; font-weight: bold; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Create an account today and get access to the trends!</h3></center>
+
+    <form action="/your-name/" method="post">
+        <label for="your_name">Your name: </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+        <input type="submit" value="OK">
+    </form>
 {% endif %}
 
 
