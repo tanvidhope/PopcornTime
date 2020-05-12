@@ -20,3 +20,11 @@ def get_recomm(request):
         # response.json = {'2329': 'Prom Night', '2298': 'Sex Drive', '4750': 'The Dirties', '3915': "Trippin'", '2392': 'Superbad', '2916': 'High School Musical 3: Senior Year', '3263': 'Easy A', '4024': 'The Spectacular Now', '2828': 'Project X', '3266': 'Prom'}
         return render(request, 'movie/recommendation.html',
                       {'movie_list': response.json()})
+
+def genre_based(request):
+    if request.method == 'GET':
+        response = requests.post('http://127.0.0.1:5000/genre', json={"title": "The Dark Knight Rises"})
+        print(response.json()) # This should contain the returned data
+        return render(request, 'movie/genre.html',
+            {'movie_list': response.json()})
+
