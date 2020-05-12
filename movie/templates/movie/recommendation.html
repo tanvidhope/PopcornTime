@@ -1,6 +1,6 @@
 {% extends 'movie/base.html' %}
 {% load static %}
-{% block title %} Home {% endblock %}
+{% block title %} Recommendations {% endblock %}
 
 {% block content %}
 <style>
@@ -32,7 +32,7 @@ body {
 
 <h3 style="color:red;"><center>Welcome to Popcorn Time!</center></h3> <br>
 <center><img height=100 width=100 src="{% static 'movie/popcorn.png' %}"></center>
-<h3 style="color:red;"><center>Trending Movies</center></h3> <br>
+<h3 style="color:red;"><center>Our Suggestions</center></h3> <br>
 <ul style="list-style-type: none;font-family: Verdana, Geneva, Tahoma, sans-serif;"><center>
 {% for movie in movie_list.values %}
     <li style="margin:5px; padding-top:10px;padding-bottom:10px; background-color:crimson;">
