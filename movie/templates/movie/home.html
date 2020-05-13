@@ -24,6 +24,12 @@ body {
             <li><a class="btn btn-primary" style="color:white;"" href="{% url 'accounts:signout' %}">Sign out</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li><a class="btn btn-primary" style="color:white;"" href="{% url 'form' %}">Genre</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="btn btn-primary" style="color:white;"" href="{% url 'home' %}">Popular</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
             <li><a style="color:greenyellow;font-weight: bold; font-size: large;">User: {{ user.get_username }}</a></li>
         </ul>
    
